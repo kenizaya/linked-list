@@ -107,6 +107,20 @@ class LinkedList {
 
     return null
   }
+
+  toString() {
+    let string = ''
+    let currentNode = this.head
+
+    while (currentNode) {
+      string += `(${currentNode.value}) -> `
+      currentNode = currentNode.nextNode
+    }
+
+    string += null
+
+    return string
+  }
 }
 
 const list = new LinkedList()
@@ -124,8 +138,8 @@ list.prepend(10)
 list.pop()
 list.pop()
 
+console.log(list.toString()) // (10) -> (34) -> (65) -> (34) -> (65) -> (99) -> (111) -> null
 console.log(list.find(65)) // 2
 console.log(list.at(5)) // Node { value: 99, nextNode: Node { value: 111, nextNode: null } }
 console.log(list.contains(99)) //true
 console.log(list.contains(75)) //false
-console.log(list)
