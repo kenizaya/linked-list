@@ -62,8 +62,6 @@ class LinkedList {
     if (index < 0 || index >= this.length) return null
     let currentNode = this.head
 
-    if (index === 0) return currentNode
-
     for (let i = 0; i < index; i++) {
       currentNode = currentNode.nextNode
     }
@@ -142,6 +140,22 @@ class LinkedList {
 
     return true
   }
+
+  removeAt(index) {
+    if (index < 0 || index >= this.length - 1) return undefined
+
+    const prevNode = this.at(index - 1)
+    const removedNode = this.at(index)
+    const nextNode = this.at(index + 1)
+
+    if (index === 0) {
+      this.head = nextNode
+    } else {
+      prevNode.nextNode = nextNode
+    }
+    this.length--
+    return removedNode.value
+  }
 }
 
 const list = new LinkedList()
@@ -163,6 +177,10 @@ list.insertAt(3, 5)
 
 console.log(list.toString()) // (10) -> (34) -> (65) -> (5) -> (34) -> (65) -> (99) -> (111) -> null,
 console.log(list.find(65)) // 2
-console.log(list.at(5)) // Node { value: 99, nextNode: Node { value: 111, nextNode: null } }
+console.log(list.at(6)) // Node { value: 99, nextNode: Node { value: 111, nextNode: null } }
 console.log(list.contains(99)) //true
 console.log(list.contains(75)) //false
+console.log(list.removeAt(0)) // 10
+console.log(list.removeAt(3)) // 34
+console.log(list.removeAt(7)) // undefined
+console.log(list.toString()) // (34) -> (65) -> (5) -> (65) -> (99) -> (111) -> null
