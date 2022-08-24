@@ -87,9 +87,22 @@ class LinkedList {
 
     return currentNode
   }
+
+  contains(value) {
+    let currentNode = this.head
+
+    while (currentNode) {
+      if (currentNode.value === value) return true
+
+      currentNode = currentNode.nextNode
+    }
+
+    return false
+  }
 }
 
 const list = new LinkedList()
+
 list.append(34)
 list.append(65)
 list.append(34)
@@ -99,5 +112,11 @@ list.append(111)
 list.append(99)
 list.append(111)
 list.prepend(10)
+
+list.pop()
+list.pop()
+
 console.log(list.at(8))
+console.log(list.contains(99))
+console.log(list.contains(75))
 console.log(list)
