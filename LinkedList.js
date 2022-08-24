@@ -30,6 +30,22 @@ class LinkedList {
     return this
   }
 
+  prepend(value) {
+    const newNode = new Node(value)
+
+    if (!this.head) {
+      this.head = newNode
+      this.tail = this.head
+    } else {
+      newNode.nextNode = this.head
+      this.head = newNode
+    }
+
+    this.length++
+
+    return this
+  }
+
   size() {
     return this.length
   }
@@ -69,6 +85,7 @@ list.append(99)
 list.append(111)
 list.append(99)
 list.append(111)
+list.prepend(10)
 
 list.pop()
 console.log(list)
