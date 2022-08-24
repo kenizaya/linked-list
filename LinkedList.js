@@ -30,6 +30,18 @@ class LinkedList {
     return this
   }
 
+  size() {
+    return this.length
+  }
+
+  head() {
+    return this.head
+  }
+
+  tail() {
+    return this.tail
+  }
+
   pop() {
     if (this.length === 0) return
 
