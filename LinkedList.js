@@ -58,6 +58,19 @@ class LinkedList {
     return this.tail
   }
 
+  at(index) {
+    if (index < 0 || index >= this.length) return null
+    let currentNode = this.head
+
+    if (index === 0) return currentNode
+
+    for (let i = 0; i < index; i++) {
+      currentNode = currentNode.nextNode
+    }
+
+    return currentNode
+  }
+
   pop() {
     if (this.length === 0) return
 
@@ -86,6 +99,5 @@ list.append(111)
 list.append(99)
 list.append(111)
 list.prepend(10)
-
-list.pop()
+console.log(list.at(8))
 console.log(list)
