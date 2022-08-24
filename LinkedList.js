@@ -99,6 +99,14 @@ class LinkedList {
 
     return false
   }
+
+  find(value) {
+    for (let index = 0; index < this.length; index++) {
+      if (this.at(index).value === value) return index
+    }
+
+    return null
+  }
 }
 
 const list = new LinkedList()
@@ -116,7 +124,8 @@ list.prepend(10)
 list.pop()
 list.pop()
 
-console.log(list.at(8))
-console.log(list.contains(99))
-console.log(list.contains(75))
+console.log(list.find(65)) // 2
+console.log(list.at(5)) // Node { value: 99, nextNode: Node { value: 111, nextNode: null } }
+console.log(list.contains(99)) //true
+console.log(list.contains(75)) //false
 console.log(list)
